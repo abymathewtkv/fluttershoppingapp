@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+// ignore: file_names
+// ignore: file_names
+import "package:flutter/material.dart";
+import "package:flutter/cupertino.dart";
 
 class DetailsPage extends StatelessWidget {
   final String img;
@@ -7,7 +9,8 @@ class DetailsPage extends StatelessWidget {
   final String price;
   final BuildContext context;
 
-  DetailsPage(
+  // ignore: use_key_in_widget_constructors
+  const DetailsPage(
       {required this.img,
       required this.title,
       required this.price,

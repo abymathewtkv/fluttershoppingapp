@@ -1,4 +1,4 @@
-import 'dart:js';
+
 
 import 'package:flutter/material.dart';
 import 'package:shoppingapp/detailsPage.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(40), topRight: Radius.circular(40)),
               boxShadow: [
                 BoxShadow(
@@ -45,11 +45,11 @@ class MyApp extends StatelessWidget {
           leading: Image.asset('assets/images/hamburger.png'),
           actions: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: Image.asset('assets/images/SEARCH.png'),
             ),
           ],
@@ -57,15 +57,16 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: [
             Row(
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
-                Text(
+                const Text(
                   "Shop ",
                   style: TextStyle(fontSize: 32, letterSpacing: 1),
                 ),
-                Text(
+                const Text(
                   "Anthropologie",
                   style: TextStyle(
                       fontSize: 26,
@@ -74,7 +75,7 @@ class MyApp extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -85,14 +86,14 @@ class MyApp extends StatelessWidget {
                 newMethod("Beauty"),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(40)),
+                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(40)),
                   boxShadow: [
                     BoxShadow(
                       color: (Colors.grey[300])!,
@@ -102,10 +103,10 @@ class MyApp extends StatelessWidget {
                   ],
                 ),
                 child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       Row(
@@ -118,24 +119,25 @@ class MyApp extends StatelessWidget {
                           buildColumnAtTop("Decor"),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       MyCandleList(),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       LineBar(),
                       Padding(
                         padding: const EdgeInsets.all(30.0),
                         child: Row(
+                          // ignore: prefer_const_literals_to_create_immutables
                           children: [
-                            Text(
+                            const Text(
                               "Holiday Special",
                               style: TextStyle(fontSize: 24),
                             ),
                             Spacer(),
-                            Text(
+                            const Text(
                               "View All",
                               style:
                                   TextStyle(fontSize: 20, color: Colors.grey),
@@ -144,7 +146,7 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                       SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
@@ -172,7 +174,7 @@ class MyApp extends StatelessWidget {
           color: isSelected ? Colors.pink[100] : Colors.white,
           shape: BoxShape.circle,
           boxShadow: isSelected
-              ? [BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 1)]
+              ? [const BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 1)]
               : []),
       height: 50,
       width: 50,
@@ -187,7 +189,7 @@ class MyApp extends StatelessWidget {
     return Container(
       height: 150,
       width: 230,
-      margin: EdgeInsets.only(left: 20),
+      margin: const EdgeInsets.only(left: 20),
       child: Row(
         children: [
           ClipRRect(
@@ -203,14 +205,16 @@ class MyApp extends StatelessWidget {
             padding: const EdgeInsets.all(18.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
-                Text("Cocout milk bath"),
-                Text(
+                const Text("Cocout milk bath"),
+                const Text(
                   "16 oz",
                   style: TextStyle(color: Colors.grey, fontSize: 18),
                 ),
+                // ignore: prefer_const_constructors
                 Spacer(),
-                Text(
+                const Text(
                   "\$ 28",
                   style: TextStyle(fontSize: 24, fontWeight: (FontWeight.w600)),
                 )
@@ -232,14 +236,14 @@ class MyApp extends StatelessWidget {
             fontSize: 18,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         if (isSelected)
           Container(
             height: 5,
             width: 5,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.black,
               shape: BoxShape.circle,
             ),
@@ -248,7 +252,9 @@ class MyApp extends StatelessWidget {
     );
   }
 
+  // ignore: deprecated_member_use
   FlatButton newMethod(String text, {bool isSelected = false}) {
+    // ignore: deprecated_member_use
     return FlatButton(
       child: Text(
         text,
@@ -260,24 +266,26 @@ class MyApp extends StatelessWidget {
       onPressed: () {
         print('Button Pressed');
       },
-      shape: StadiumBorder(),
+      shape: const StadiumBorder(),
       color: isSelected ? Colors.pink[100] : Colors.grey[300],
     );
   }
 }
 
 class LineBar extends StatelessWidget {
+  const LineBar({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     print(MediaQuery.of(context).size.height);
     return Container(
       height: 5,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(left: 40),
+      margin: const EdgeInsets.only(left: 40),
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
         color: Colors.grey[300],
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(10),
           bottomLeft: Radius.circular(10),
         ),
@@ -285,7 +293,7 @@ class LineBar extends StatelessWidget {
       child: Container(
         height: 5,
         width: 100,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10),
@@ -298,6 +306,8 @@ class LineBar extends StatelessWidget {
 }
 
 class MyCandleList extends StatelessWidget {
+  const MyCandleList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -305,7 +315,7 @@ class MyCandleList extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           buildColumnWithRow("1", "Element Tin Candle", "29", context),
@@ -328,6 +338,7 @@ class MyCandleList extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
+            // ignore: sized_box_for_whitespace
             Container(
               height: 220,
               width: 160,
@@ -339,19 +350,19 @@ class MyCandleList extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
               title,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
               "\$ $price",
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             )
           ],
         ),
