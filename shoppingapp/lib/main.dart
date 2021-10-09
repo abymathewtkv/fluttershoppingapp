@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Jesus   Christ',
+      title: 'My Shopping App',
       home: Scaffold(
         backgroundColor: Colors.grey[200],
         bottomNavigationBar: Container(
