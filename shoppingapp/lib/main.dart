@@ -10,6 +10,31 @@ class MyApp extends StatelessWidget {
       title: 'Jesus   Christ',
       home: Scaffold(
         backgroundColor: Colors.grey[200],
+        bottomNavigationBar: Container(
+          color: Colors.white,
+          height: 70,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 20, color: Colors.grey[300]!, spreadRadius: 1)
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildContainerBottomNav(Icons.person),
+                buildContainerBottomNav(Icons.shopping_bag),
+                buildContainerBottomNav(Icons.home, isSelected: true),
+                buildContainerBottomNav(Icons.favorite),
+                buildContainerBottomNav(Icons.settings),
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
           toolbarHeight: 70,
           backgroundColor: Colors.grey[200],
@@ -73,77 +98,98 @@ class MyApp extends StatelessWidget {
                     )
                   ],
                 ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        buildColumnAtTop("Candles", isSelected: true),
-                        buildColumnAtTop("Vases"),
-                        buildColumnAtTop("Bins"),
-                        buildColumnAtTop("Floral"),
-                        buildColumnAtTop("Decor"),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          SizedBox(
-                            width: 20,
-                          ),
-                          buildColumnWithRow("1", "Element Tin Candle", "29"),
-                          buildColumnWithRow("2", "Summer Candle", "23"),
-                          buildColumnWithRow("3", "Winter Candle", "40"),
-                          buildColumnWithRow("4", "Dummy Candle", "60"),
+                          buildColumnAtTop("Candles", isSelected: true),
+                          buildColumnAtTop("Vases"),
+                          buildColumnAtTop("Bins"),
+                          buildColumnAtTop("Floral"),
+                          buildColumnAtTop("Decor"),
                         ],
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    LineBar(),
-                    Padding(
-                      padding: const EdgeInsets.all(30.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            "Holiday Special",
-                            style: TextStyle(fontSize: 24),
-                          ),
-                          Spacer(),
-                          Text(
-                            "View All",
-                            style: TextStyle(fontSize: 20, color: Colors.grey),
-                          ),
-                        ],
+                      SizedBox(
+                        height: 20,
                       ),
-                    ),
-                    SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          buildBottomContainer(),
-                          buildBottomContainer(),
-                          buildBottomContainer(),
-                          buildBottomContainer(),
-                        ],
+                      SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            buildColumnWithRow("1", "Element Tin Candle", "29"),
+                            buildColumnWithRow("2", "Summer Candle", "23"),
+                            buildColumnWithRow("3", "Winter Candle", "40"),
+                            buildColumnWithRow("4", "Dummy Candle", "60"),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        height: 20,
+                      ),
+                      LineBar(),
+                      Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Holiday Special",
+                              style: TextStyle(fontSize: 24),
+                            ),
+                            Spacer(),
+                            Text(
+                              "View All",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            buildBottomContainer(),
+                            buildBottomContainer(),
+                            buildBottomContainer(),
+                            buildBottomContainer(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Container buildContainerBottomNav(IconData icon, {isSelected = false}) {
+    return Container(
+      decoration: BoxDecoration(
+          color: isSelected ? Colors.pink[100] : Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: isSelected
+              ? [BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 1)]
+              : []),
+      height: 50,
+      width: 50,
+      child: Icon(
+        icon,
+        color: isSelected ? Colors.white : Colors.black,
       ),
     );
   }
