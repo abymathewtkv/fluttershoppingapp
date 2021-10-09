@@ -1,4 +1,7 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:shoppingapp/detailsPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -118,21 +121,7 @@ class MyApp extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 20,
-                            ),
-                            buildColumnWithRow("1", "Element Tin Candle", "29"),
-                            buildColumnWithRow("2", "Summer Candle", "23"),
-                            buildColumnWithRow("3", "Winter Candle", "40"),
-                            buildColumnWithRow("4", "Dummy Candle", "60"),
-                          ],
-                        ),
-                      ),
+                      MyCandleList(),
                       SizedBox(
                         height: 20,
                       ),
@@ -205,7 +194,7 @@ class MyApp extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
               child: SizedBox(
                   height: 120,
-                  width: 100,
+                  width: 88,
                   child: Image.asset(
                     "assets/images/candel3.jpg",
                     fit: BoxFit.cover,
@@ -227,41 +216,6 @@ class MyApp extends StatelessWidget {
                 )
               ],
             ),
-          )
-        ],
-      ),
-    );
-  }
-
-  Padding buildColumnWithRow(String img, String title, String price) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Container(
-            height: 220,
-            width: 160,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                "assets/images/candel$img.jpg",
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            title,
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            "\$ $price",
-            style: TextStyle(fontSize: 20),
           )
         ],
       ),
@@ -337,6 +291,69 @@ class LineBar extends StatelessWidget {
             topLeft: Radius.circular(10),
             bottomLeft: Radius.circular(10),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyCandleList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 20,
+          ),
+          buildColumnWithRow("1", "Element Tin Candle", "29", context),
+          buildColumnWithRow("2", "Summer Candle", "23", context),
+          buildColumnWithRow("3", "Winter Candle", "40", context),
+          buildColumnWithRow("4", "Dummy Candle", "60", context),
+        ],
+      ),
+    );
+  }
+
+  GestureDetector buildColumnWithRow(
+      String img, String title, String price, BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => DetailsPage(img: img, title: title,price: price,context: context,)));
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Container(
+              height: 220,
+              width: 160,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  "assets/images/candel$img.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              title,
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              "\$ $price",
+              style: TextStyle(fontSize: 20),
+            )
+          ],
         ),
       ),
     );
