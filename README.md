@@ -1,4 +1,4 @@
-# Codium login page
+# Flutter Shopping Application
 
 #### This Flutter application is a basic shopping app.
 
