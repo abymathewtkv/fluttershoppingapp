@@ -1,18 +1,9 @@
 # Flutter Shopping Application
 
-#### This Flutter application is a basic shopping app.In this project I created a online shop app UI using flutter. The UI consist of two pages. In the first page an horizontal lists
-#### of poducts, then the second(details)page consist of name, price and a small description of our project with a buy now button. 
-
-
-#### It contains UI of a candle shopping application 
-
-
-
+#### This Flutter application is a basic shopping app.In this project I created a online shop app UI using flutter. The UI consist of two pages. In the first page an horizontal lists of poducts, then the second(details)page consist of name, price and a small description of our project with a buy now button. 
 
 ## Documentation
 #### The Documentation is  available [here](https://flutter.dev/docs)
-
-
 
 # Installation instructions
 ### System requirements:
