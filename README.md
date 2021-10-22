@@ -1,6 +1,7 @@
 # Flutter Shopping Application
 
-#### This Flutter application is a basic shopping app.
+#### This Flutter application is a basic shopping app.In this project I created a online shop app
+#### UI using flutter. The UI consist of two pages
 
 
 #### It contains UI of a candle shopping application 
